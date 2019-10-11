@@ -1,0 +1,12 @@
+[submodule "noCO2-front"]
+	path = noCO2-front
+	url = git@github.com:adeharo9/noCO2-front.git
+	branch = master
+[submodule "noCO2-back"]
+	path = noCO2-back
+	url = git@github.com:adeharo9/noCO2-back.git
+	branch = master
+[submodule "noCO2-core"]
+	path = noCO2-core
+	url = git@github.com:adeharo9/noCO2-core.git
+	branch = master
