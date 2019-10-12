@@ -10,3 +10,7 @@
 	path = noCO2-core
 	url = git@github.com:adeharo9/noCO2-core.git
 	branch = master
+[submodule "noCO2-deploy"]
+	path = noCO2-deploy
+	url = git@github.com:adeharo9/noCO2-deploy.git
+	branch = master
