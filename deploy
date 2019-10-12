@@ -7,7 +7,7 @@ fi
 
 ## CONFIGS
 # Paths
-NOCO2_PATH=/home/papaya/noCO2/noCO2-meta
+NOCO2_PATH=/home/papaya/noCO2-meta
 NOCO2_CORE=${NOCO2_PATH}/noCO2-core
 NOCO2_BACK=${NOCO2_PATH}/noCO2-back
 NOCO2_FRONT=${NOCO2_PATH}/noCO2-front
