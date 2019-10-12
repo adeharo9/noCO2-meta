@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+    printf "Please run as root\n";
+    exit 1;
+fi
+
+## CONFIGS
+# Paths
+NOCO2_PATH=/home/papaya/noCO2/noCO2-meta
+NOCO2_CORE=${NOCO2_PATH}/noCO2-core
+NOCO2_BACK=${NOCO2_PATH}/noCO2-back
+NOCO2_FRONT=${NOCO2_PATH}/noCO2-front
+APACHE_DIR=/var/www/html
+
+# Files      
+CORE_EXE=core
+
+## BODY
+# META
+# Update repos
+cd ${NOCO2_PATH};
+git pull origin master;
+git submodule foreach git pull origin master;
+
+# CORE
+# Recompile core
+cd ${NOCO2_CORE};
+rm -f ${CORE_EXE};
+make ${CORE_EXE};
+
+# BACKEND
+# Install new dependencies
+cd ${NOCO2_BACK};
+npm install
+
+# Kill old server backends
+NODE_PIDS=$(ps -u papaya | grep "^[0-9]\+.*node" | grep -o "^[0-9]\+");
+for NODE_PID in ${NODE_PIDS}; do
+    kill ${NODE_PID};
+done
+
+# Start new server backend
+npm run start;
+
+# FRONTEND
+cd ${NOCO2_FRONT};
+rm -rf ${APACHE_DIR}/*;
+cp * ${APACHE_DIR};
