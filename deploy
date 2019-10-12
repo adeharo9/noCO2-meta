@@ -38,6 +38,7 @@ npm install
 NODE_PIDS=$(ps -a | grep "^[0-9]\+.*node" | grep -o "^[0-9]\+");
 for NODE_PID in ${NODE_PIDS}; do
     kill ${NODE_PID};
+    printf "Killed node process with PID ${NODE_PID}\n";
 done
 
 # Start new server backend
@@ -46,4 +47,4 @@ npm run start;
 # FRONTEND
 cd ${NOCO2_FRONT};
 rm -rf ${APACHE_DIR}/*;
-cp * ${APACHE_DIR};
+cp -r * ${APACHE_DIR};
