@@ -35,7 +35,7 @@ cd ${NOCO2_BACK};
 npm install
 
 # Kill old server backends
-NODE_PIDS=$(ps -u papaya | grep "^[0-9]\+.*node" | grep -o "^[0-9]\+");
+NODE_PIDS=$(ps -a | grep "^[0-9]\+.*node" | grep -o "^[0-9]\+");
 for NODE_PID in ${NODE_PIDS}; do
     kill ${NODE_PID};
 done
